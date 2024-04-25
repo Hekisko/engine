@@ -30,7 +30,7 @@ import jakarta.ws.rs.core.MediaType;
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@Path("/ai/{organizationId:[0-9a-fA-F]{24}}")
+@Path("/organizations/{organizationId:[0-9a-fA-F]{24}}/ai")
 public class AiService extends AbstractService {
 
     @Inject
@@ -44,7 +44,7 @@ public class AiService extends AbstractService {
         workspaceKeeper.setOrganizationId(organizationId);
     }
 
-    @GET
+    @POST
     @Path("tables")
     public AiTableResponse getAiTables(AiTableRequest aiTableRequest) {
         return aiFacade.createTablesWithAi(aiTableRequest.getTablesDescription());
