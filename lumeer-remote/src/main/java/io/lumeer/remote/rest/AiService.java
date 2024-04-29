@@ -30,19 +30,11 @@ import jakarta.ws.rs.core.MediaType;
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@Path("/organizations/{organizationId:[0-9a-fA-F]{24}}/ai")
+@Path("/ai")
 public class AiService extends AbstractService {
 
     @Inject
     private AiFacade aiFacade;
-
-    @PathParam("organizationId")
-    private String organizationId;
-
-    @PostConstruct
-    public void init() {
-        workspaceKeeper.setOrganizationId(organizationId);
-    }
 
     @POST
     @Path("tables")
