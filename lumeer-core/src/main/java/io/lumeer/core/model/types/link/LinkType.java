@@ -10,6 +10,7 @@ public class LinkType extends AbstractType {
     private LinkExample exampleValue;
 
     public LinkType() {
+        this(new LinkExample());
     }
 
     public LinkType(LinkExample exampleValue) {

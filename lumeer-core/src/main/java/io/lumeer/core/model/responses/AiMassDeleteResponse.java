@@ -1,34 +1,26 @@
-package io.lumeer.core.model;
+package io.lumeer.core.model.responses;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.lumeer.api.model.Collection;
 
-import java.util.List;
+import java.util.Arrays;
 
-public class AiTableResponse {
+public class AiMassDeleteResponse {
 
-    private List<Collection> tables;
+    private String[] idsToBeDeleted;
     private boolean error;
     private String errorMessage;
 
     @JsonCreator
-    public AiTableResponse(
-            @JsonProperty("tables") List<Collection> tables,
+    public AiMassDeleteResponse(
+            @JsonProperty("idsToBeDeleted") String[] idsToBeDeleted,
             @JsonProperty("error") boolean error,
             @JsonProperty("errorMessage") String errorMessage) {
-        this.tables = tables;
+        this.idsToBeDeleted = idsToBeDeleted;
         this.error = error;
         this.errorMessage = errorMessage;
     }
 
-    public List<Collection> getTables() {
-        return tables;
-    }
-
-    public void setTables(List<Collection> tables) {
-        this.tables = tables;
-    }
 
     public boolean isError() {
         return error;
@@ -46,10 +38,18 @@ public class AiTableResponse {
         this.errorMessage = errorMessage;
     }
 
+    public String[] getIdsToBeDeleted() {
+        return idsToBeDeleted;
+    }
+
+    public void setIdsToBeDeleted(String[] idsToBeDeleted) {
+        this.idsToBeDeleted = idsToBeDeleted;
+    }
+
     @Override
     public String toString() {
-        return "AiTableResponse{" +
-                "tables=" + tables +
+        return "AiMassDeleteResponse{" +
+                "idsToBeDeleted=" + Arrays.toString(idsToBeDeleted) +
                 ", error=" + error +
                 ", errorMessage='" + errorMessage + '\'' +
                 '}';

@@ -14,6 +14,14 @@ public class SelectionTypeDetail {
     private List<SelectionValue> values;
 
     public SelectionTypeDetail() {
+        this(
+                false,
+                "Progress meter",
+                List.of(new SelectionValue("Not started", "#ff0000"),
+                        new SelectionValue("In progress", "#3cb371"),
+                        new SelectionValue("Done", "#0000ff")
+                )
+        );
     }
 
     public SelectionTypeDetail(boolean allowMultipleValues, String name, List<SelectionValue> values) {

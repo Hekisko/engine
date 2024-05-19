@@ -1,6 +1,5 @@
 package io.lumeer.core.model.types.text;
 
-import io.lumeer.core.model.enums.ECoordinatesFormat;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +9,7 @@ public class TextTypeDetail {
     private int maximumLength;
     private int minimumLength;
     public TextTypeDetail() {
+        this(300, 0);
     }
 
     public TextTypeDetail(int maximumLength, int minimumLength) {

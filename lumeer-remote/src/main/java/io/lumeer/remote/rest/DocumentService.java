@@ -122,7 +122,9 @@ public class DocumentService extends AbstractService {
    @POST
    @Path("delete")
    public Response deleteDocuments(final Set<String> documentIds) {
-      documentFacade.deleteDocuments(documentIds);
+      for (String idToBeDeleted: documentIds) {
+         documentFacade.deleteDocument(collectionId, idToBeDeleted);
+      }
 
       return Response.ok().build();
    }

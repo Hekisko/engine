@@ -3,12 +3,15 @@ package io.lumeer.core.model.types.selection;
 import io.lumeer.core.model.enums.EAiType;
 import io.lumeer.core.model.types.AbstractType;
 
+import java.util.List;
+
 public class SelectionType extends AbstractType {
 
     private SelectionExample exampleValue;
     private SelectionTypeDetail typeDetail;
 
     public SelectionType() {
+        this(new SelectionExample(), new SelectionTypeDetail());
     }
 
     public SelectionType(SelectionExample exampleValue, SelectionTypeDetail typeDetail) {

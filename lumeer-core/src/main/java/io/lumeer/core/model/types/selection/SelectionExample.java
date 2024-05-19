@@ -7,6 +7,7 @@ public class SelectionExample {
     private List<String> selected;
 
     public SelectionExample() {
+        this(List.of("Done"));
     }
 
     public SelectionExample(List<String> selected) {

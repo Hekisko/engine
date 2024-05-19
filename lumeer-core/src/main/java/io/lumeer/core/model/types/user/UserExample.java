@@ -5,6 +5,7 @@ public class UserExample {
     private String user;
 
     public UserExample() {
+        this("lumeer@email.com");
     }
 
     public UserExample(String user) {

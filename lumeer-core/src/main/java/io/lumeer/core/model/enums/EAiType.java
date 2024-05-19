@@ -1,6 +1,8 @@
 package io.lumeer.core.model.enums;
 
+import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.lumeer.api.model.ConstraintType;
 import io.lumeer.core.model.dto.AiTypeDto;
@@ -39,14 +41,23 @@ import io.lumeer.core.model.types.user.UserExample;
 import io.lumeer.core.model.types.user.UserType;
 
 public enum EAiType {
-
     ADDRESS {
         @Override
-        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) throws JsonProcessingException {
-            return new AddressType(
-                    objectMapper.readValue(aiTypeDto.getExampleValue().toString(), AddressExample.class),
-                    objectMapper.readValue(aiTypeDto.getTypeDetail().toString(), AddressTypeDetail.class)
+        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) {
+            AddressExample example = parseAndValidate(
+                    aiTypeDto.getExampleValue(),
+                    objectMapper,
+                    AddressExample.class,
+                    new AddressExample()
             );
+            AddressTypeDetail typeDetail = parseAndValidate(
+                    aiTypeDto.getTypeDetail(),
+                    objectMapper,
+                    AddressTypeDetail.class,
+                    new AddressTypeDetail()
+            );
+
+            return new AddressType(example, typeDetail);
         }
 
         @Override
@@ -56,10 +67,15 @@ public enum EAiType {
     },
     CHECK_BOX {
         @Override
-        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) throws JsonProcessingException {
-            return new CheckBoxType(
-                    objectMapper.readValue(aiTypeDto.getExampleValue().toString(), CheckBoxExample.class)
+        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) {
+            CheckBoxExample example = parseAndValidate(
+                    aiTypeDto.getExampleValue(),
+                    objectMapper,
+                    CheckBoxExample.class,
+                    new CheckBoxExample()
             );
+
+            return new CheckBoxType(example);
         }
         @Override
         public ConstraintType getLumeerType() {
@@ -68,10 +84,15 @@ public enum EAiType {
     },
     COLOR {
         @Override
-        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) throws JsonProcessingException {
-            return new ColorType(
-                    objectMapper.readValue(aiTypeDto.getExampleValue().toString(), ColorExample.class)
+        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) {
+            ColorExample example = parseAndValidate(
+                    aiTypeDto.getExampleValue(),
+                    objectMapper,
+                    ColorExample.class,
+                    new ColorExample()
             );
+
+            return new ColorType(example);
         }
 
         @Override
@@ -81,11 +102,21 @@ public enum EAiType {
     },
     COORDINATES {
         @Override
-        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) throws JsonProcessingException {
-            return new CoordinatesType(
-                    objectMapper.readValue(aiTypeDto.getExampleValue().toString(), CoordinatesExample.class),
-                    objectMapper.readValue(aiTypeDto.getTypeDetail().toString(), CoordinatesTypeDetail.class)
+        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) {
+            CoordinatesExample example = parseAndValidate(
+                    aiTypeDto.getExampleValue(),
+                    objectMapper,
+                    CoordinatesExample.class,
+                    new CoordinatesExample()
             );
+            CoordinatesTypeDetail typeDetail = parseAndValidate(
+                    aiTypeDto.getTypeDetail(),
+                    objectMapper,
+                    CoordinatesTypeDetail.class,
+                    new CoordinatesTypeDetail()
+            );
+
+            return new CoordinatesType(example, typeDetail);
         }
 
         @Override
@@ -95,11 +126,21 @@ public enum EAiType {
     },
     DATE {
         @Override
-        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) throws JsonProcessingException {
-            return new DateType(
-                    objectMapper.readValue(aiTypeDto.getExampleValue().toString(), DateExample.class),
-                    objectMapper.readValue(aiTypeDto.getTypeDetail().toString(), DateTypeDetail.class)
+        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) {
+            DateExample example = parseAndValidate(
+                    aiTypeDto.getExampleValue(),
+                    objectMapper,
+                    DateExample.class,
+                    new DateExample()
             );
+            DateTypeDetail typeDetail = parseAndValidate(
+                    aiTypeDto.getTypeDetail(),
+                    objectMapper,
+                    DateTypeDetail.class,
+                    new DateTypeDetail()
+            );
+
+            return new DateType(example, typeDetail);
         }
 
         @Override
@@ -109,10 +150,15 @@ public enum EAiType {
     },
     DURATION {
         @Override
-        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) throws JsonProcessingException {
-            return new DurationType(
-                    objectMapper.readValue(aiTypeDto.getExampleValue().toString(), DurationExample.class)
+        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) {
+            DurationExample example = parseAndValidate(
+                    aiTypeDto.getExampleValue(),
+                    objectMapper,
+                    DurationExample.class,
+                    new DurationExample()
             );
+
+            return new DurationType(example);
         }
 
         @Override
@@ -133,10 +179,15 @@ public enum EAiType {
     },
     LINK {
         @Override
-        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) throws JsonProcessingException {
-            return new LinkType(
-                    objectMapper.readValue(aiTypeDto.getExampleValue().toString(), LinkExample.class)
+        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) {
+            LinkExample example = parseAndValidate(
+                    aiTypeDto.getExampleValue(),
+                    objectMapper,
+                    LinkExample.class,
+                    new LinkExample()
             );
+
+            return new LinkType(example);
         }
 
         @Override
@@ -146,11 +197,21 @@ public enum EAiType {
     },
     NUMBER {
         @Override
-        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) throws JsonProcessingException {
-            return new NumberType(
-                    objectMapper.readValue(aiTypeDto.getExampleValue().toString(), NumberExample.class),
-                    objectMapper.readValue(aiTypeDto.getTypeDetail().toString(), NumberTypeDetail.class)
+        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) {
+            NumberExample example = parseAndValidate(
+                    aiTypeDto.getExampleValue(),
+                    objectMapper,
+                    NumberExample.class,
+                    new NumberExample()
             );
+            NumberTypeDetail typeDetail = parseAndValidate(
+                    aiTypeDto.getTypeDetail(),
+                    objectMapper,
+                    NumberTypeDetail.class,
+                    new NumberTypeDetail()
+            );
+
+            return new NumberType(example, typeDetail);
         }
 
         @Override
@@ -160,11 +221,21 @@ public enum EAiType {
     },
     PERCENTAGE {
         @Override
-        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) throws JsonProcessingException {
-            return new PercentageType(
-                    objectMapper.readValue(aiTypeDto.getExampleValue().toString(), PercentageExample.class),
-                    objectMapper.readValue(aiTypeDto.getTypeDetail().toString(), PercentageTypeDetail.class)
+        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) {
+            PercentageExample example = parseAndValidate(
+                    aiTypeDto.getExampleValue(),
+                    objectMapper,
+                    PercentageExample.class,
+                    new PercentageExample()
             );
+            PercentageTypeDetail typeDetail = parseAndValidate(
+                    aiTypeDto.getTypeDetail(),
+                    objectMapper,
+                    PercentageTypeDetail.class,
+                    new PercentageTypeDetail()
+            );
+
+            return new PercentageType(example, typeDetail);
         }
 
         @Override
@@ -174,11 +245,21 @@ public enum EAiType {
     },
     SELECTION {
         @Override
-        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) throws JsonProcessingException {
-            return new SelectionType(
-                    objectMapper.readValue(aiTypeDto.getExampleValue().toString(), SelectionExample.class),
-                    objectMapper.readValue(aiTypeDto.getTypeDetail().toString(), SelectionTypeDetail.class)
+        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) {
+            SelectionExample example = parseAndValidate(
+                    aiTypeDto.getExampleValue(),
+                    objectMapper,
+                    SelectionExample.class,
+                    new SelectionExample()
             );
+            SelectionTypeDetail typeDetail = parseAndValidate(
+                    aiTypeDto.getTypeDetail(),
+                    objectMapper,
+                    SelectionTypeDetail.class,
+                    new SelectionTypeDetail()
+            );
+
+            return new SelectionType(example, typeDetail);
         }
 
         @Override
@@ -188,11 +269,21 @@ public enum EAiType {
     },
     TEXT {
         @Override
-        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) throws JsonProcessingException {
-            return new TextType(
-                    objectMapper.readValue(aiTypeDto.getExampleValue().toString(), TextExample.class),
-                    objectMapper.readValue(aiTypeDto.getTypeDetail().toString(), TextTypeDetail.class)
+        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) {
+            TextExample example = parseAndValidate(
+                    aiTypeDto.getExampleValue(),
+                    objectMapper,
+                    TextExample.class,
+                    new TextExample()
             );
+            TextTypeDetail typeDetail = parseAndValidate(
+                    aiTypeDto.getTypeDetail(),
+                    objectMapper,
+                    TextTypeDetail.class,
+                    new TextTypeDetail()
+            );
+
+            return new TextType(example, typeDetail);
         }
 
         @Override
@@ -202,19 +293,60 @@ public enum EAiType {
     },
     USER {
         @Override
-        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) throws JsonProcessingException {
-            return new UserType(
-                    objectMapper.readValue(aiTypeDto.getExampleValue().toString(), UserExample.class)
+        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) {
+            UserExample example = parseAndValidate(
+                    aiTypeDto.getExampleValue(),
+                    objectMapper,
+                    UserExample.class,
+                    new UserExample()
             );
+
+            return new UserType(example);
         }
 
         @Override
         public ConstraintType getLumeerType() {
             return ConstraintType.User;
         }
+    },
+    @JsonEnumDefaultValue UNKNOWN {
+        @Override
+        public AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) {
+            return new TextType(
+                    new TextExample(
+                            "Unknown type"
+                    ),
+                    new TextTypeDetail(
+                            100, 0
+                    )
+            );
+        }
+
+        @Override
+        public ConstraintType getLumeerType() {
+            return ConstraintType.Text;
+        }
     };
 
+    public static boolean isValid(JsonNode node) {
+        return node != null && !"null".equalsIgnoreCase(node.toString());
+    }
 
-    public abstract AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper) throws JsonProcessingException;
+    public static <T> T parseAndValidate(JsonNode value,
+                                         ObjectMapper objectMapper,
+                                         Class<T> valueType,
+                                         T defaultInstance) {
+        if (EAiType.isValid(value)) {
+            try {
+                return objectMapper.readValue(value.toString(), valueType);
+            } catch (JsonProcessingException | NullPointerException ignored) {
+                return defaultInstance;
+            }
+        } else {
+            return defaultInstance;
+        }
+    }
+
+    public abstract AbstractType getType(AiTypeDto aiTypeDto, ObjectMapper objectMapper);
     public abstract ConstraintType getLumeerType();
 }

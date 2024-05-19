@@ -10,6 +10,7 @@ public class CheckBoxType extends AbstractType {
     private CheckBoxExample exampleValue;
 
     public CheckBoxType() {
+        this(new CheckBoxExample());
     }
 
     public CheckBoxType(CheckBoxExample exampleValue) {

@@ -11,6 +11,7 @@ public class CoordinatesTypeDetail {
     private int precision;
 
     public CoordinatesTypeDetail() {
+        this(ECoordinatesFormat.DECIMAL, 6);
     }
 
     public CoordinatesTypeDetail(ECoordinatesFormat format, int precision) {

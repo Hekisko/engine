@@ -7,6 +7,7 @@ public class CoordinatesExample {
     private String second;
 
     public CoordinatesExample() {
+        this("37.774929", "-122.419416");
     }
 
     public CoordinatesExample(String first, String second) {

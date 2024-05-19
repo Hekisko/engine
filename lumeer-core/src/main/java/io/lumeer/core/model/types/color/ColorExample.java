@@ -5,6 +5,7 @@ public class ColorExample {
     private String color;
 
     public ColorExample() {
+        this("#ff0000");
     }
 
     public ColorExample(String color) {

@@ -1,6 +1,7 @@
 package io.lumeer.core.model.types.percentage;
 
 import io.lumeer.core.model.enums.EAiType;
+import io.lumeer.core.model.enums.EPercentageFormat;
 import io.lumeer.core.model.types.AbstractType;
 
 public class PercentageType extends AbstractType {
@@ -9,6 +10,7 @@ public class PercentageType extends AbstractType {
     private PercentageTypeDetail typeDetail;
 
     public PercentageType() {
+        this(new PercentageExample(), new PercentageTypeDetail());
     }
 
     public PercentageType(PercentageExample exampleValue, PercentageTypeDetail typeDetail) {

@@ -19,9 +19,8 @@
 package io.lumeer.remote.rest;
 
 import io.lumeer.core.facade.*;
-import io.lumeer.core.model.AiTableRequest;
-import io.lumeer.core.model.AiTableResponse;
-import jakarta.annotation.PostConstruct;
+import io.lumeer.core.model.requests.*;
+import io.lumeer.core.model.responses.*;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -39,6 +38,36 @@ public class AiService extends AbstractService {
     @POST
     @Path("tables")
     public AiTableResponse getAiTables(AiTableRequest aiTableRequest) {
-        return aiFacade.createTablesWithAi(aiTableRequest.getTablesDescription());
+        return aiFacade.createTablesWithAi(aiTableRequest);
+    }
+
+    @POST
+    @Path("suggestDataType")
+    public AiSuggestDataTypeResponse suggestDataType(AiSuggestDataTypeRequest aiSuggestDataTypeRequest) {
+        return aiFacade.suggestDataType(aiSuggestDataTypeRequest);
+    }
+
+    @POST
+    @Path("checkData")
+    public AiCheckDataResponse checkData(AiCheckDataRequest aiCheckDataRequest) {
+        return aiFacade.checkData(aiCheckDataRequest.getData());
+    }
+
+    @POST
+    @Path("assistedWriting")
+    public AiAssistedWritingResponse assistedWriting(AiAssistedWritingRequest aiAssistedWritingRequest) {
+        return aiFacade.assistedWriting(aiAssistedWritingRequest);
+    }
+
+    @POST
+    @Path("template")
+    public AiTemplateResponse template(AiTemplateRequest aiTemplateRequest) {
+        return aiFacade.getBestTemplates(aiTemplateRequest.getProjectDescription());
+    }
+
+    @POST
+    @Path("massDelete")
+    public AiMassDeleteResponse massDelete(AiMassDeleteRequest aiMassDeleteRequest) {
+        return aiFacade.massDelete(aiMassDeleteRequest);
     }
 }

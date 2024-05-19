@@ -10,6 +10,7 @@ public class ColorType extends AbstractType {
     private ColorExample exampleValue;
 
     public ColorType() {
+        this(new ColorExample());
     }
 
     public ColorType(ColorExample exampleValue) {

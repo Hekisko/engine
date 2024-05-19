@@ -5,6 +5,7 @@ public class PercentageExample {
     private Double percentage;
 
     public PercentageExample() {
+        this(50.);
     }
 
     public PercentageExample(Double percentage) {

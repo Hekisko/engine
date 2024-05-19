@@ -5,6 +5,7 @@ public class DurationExample {
     private long duration;
 
     public DurationExample() {
+        this(1000);
     }
 
     public DurationExample(long duration) {

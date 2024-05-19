@@ -1,7 +1,6 @@
 package io.lumeer.core.model.types.duration;
 
 import io.lumeer.core.model.enums.EAiType;
-import io.lumeer.core.model.enums.ECoordinatesFormat;
 import io.lumeer.core.model.types.AbstractType;
 
 import java.util.HashMap;
@@ -12,6 +11,7 @@ public class DurationType extends AbstractType {
     private DurationExample exampleValue;
 
     public DurationType() {
+        this(new DurationExample());
     }
 
     public DurationType(DurationExample exampleValue) {
@@ -33,7 +33,7 @@ public class DurationType extends AbstractType {
         Map<String, Object> conversions = new HashMap<>();
         conversions.put("w", 1);
         resultMap.put("type", "classic");
-        resultMap.put("conversions", conversions); //TODO ako funguju tieti conversions
+        resultMap.put("conversions", conversions);
 
         return resultMap;
     }

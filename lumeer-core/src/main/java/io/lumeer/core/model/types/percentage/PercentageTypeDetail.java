@@ -15,6 +15,13 @@ public class PercentageTypeDetail {
     private Double minimum;
     private int roundedToNumberOfDigit;
     public PercentageTypeDetail() {
+        this(
+                "#ff0000",
+                EPercentageFormat.PROGRESS_BAR,
+                100.,
+                0.,
+                0
+        );
     }
 
     public PercentageTypeDetail(String color, EPercentageFormat display, Double maximum, Double minimum, int roundedToNumberOfDigit) {

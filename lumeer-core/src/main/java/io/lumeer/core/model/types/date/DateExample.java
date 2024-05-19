@@ -5,6 +5,7 @@ public class DateExample {
     private long date;
 
     public DateExample() {
+        this(214321617L);
     }
 
     public DateExample(long date) {

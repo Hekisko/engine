@@ -11,6 +11,7 @@ public class AddressExample {
     private String street;
 
     public AddressExample() {
+        this("Brno", null, null, null, null, null, "Botanická");
     }
 
     public AddressExample(String city, String country, String county, String houseNumber, String postalCode, String state, String street) {

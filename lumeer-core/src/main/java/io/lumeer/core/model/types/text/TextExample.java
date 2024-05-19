@@ -5,6 +5,7 @@ public class TextExample {
     private String text;
 
     public TextExample() {
+        this("Lorem ipsum");
     }
 
     public TextExample(String text) {

@@ -9,6 +9,7 @@ public class TextType extends AbstractType {
     private TextTypeDetail typeDetail;
 
     public TextType() {
+        this(new TextExample(), new TextTypeDetail());
     }
 
     public TextType(TextExample exampleValue, TextTypeDetail typeDetail) {

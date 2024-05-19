@@ -5,6 +5,7 @@ public class NumberExample {
     private Double number;
 
     public NumberExample() {
+        this(1.);
     }
 
     public NumberExample(Double number) {

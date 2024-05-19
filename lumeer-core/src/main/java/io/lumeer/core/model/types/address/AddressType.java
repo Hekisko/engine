@@ -12,6 +12,7 @@ public class AddressType extends AbstractType {
     private AddressTypeDetail typeDetail;
 
     public AddressType() {
+        this(new AddressExample(), new AddressTypeDetail());
     }
 
     public AddressType(AddressExample exampleValue, AddressTypeDetail typeDetail) {

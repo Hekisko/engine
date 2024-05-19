@@ -17,6 +17,16 @@ public class NumberTypeDetail {
     private boolean thousandSeparated;
 
     public NumberTypeDetail() {
+        this(
+                true,
+                false,
+                null,
+                false,
+                null,
+                null,
+                0,
+                false
+        );
     }
 
     public NumberTypeDetail(boolean canBeNegative, boolean compactMode, String currency, boolean forceSign, Double max, Double min, int roundedToNumberOfDigit, boolean thousandSeparated) {
@@ -122,7 +132,7 @@ public class NumberTypeDetail {
         }
 
         if (currency != null) {
-            resultMap.put("currency", currency); //TODO ako tranformovat na LanguageTag z UI
+            resultMap.put("currency", currency);
         }
 
         resultMap.put("decimals", roundedToNumberOfDigit);

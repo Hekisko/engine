@@ -1,7 +1,6 @@
 package io.lumeer.core.model.types.user;
 
 import io.lumeer.core.model.enums.EAiType;
-import io.lumeer.core.model.enums.ECoordinatesFormat;
 import io.lumeer.core.model.types.AbstractType;
 
 import java.util.HashMap;
@@ -12,6 +11,7 @@ public class UserType extends AbstractType {
     private UserExample exampleValue;
 
     public UserType() {
+        this(new UserExample());
     }
 
     public UserType(UserExample exampleValue) {

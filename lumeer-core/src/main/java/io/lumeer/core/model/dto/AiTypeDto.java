@@ -1,7 +1,11 @@
 package io.lumeer.core.model.dto;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.lumeer.core.model.enums.EAiType;
+import io.lumeer.core.model.types.AbstractType;
+
 
 public class AiTypeDto {
 
@@ -40,6 +44,10 @@ public class AiTypeDto {
 
     public void setTypeDetail(JsonNode typeDetail) {
         this.typeDetail = typeDetail;
+    }
+
+    public AbstractType getJavaType(ObjectMapper objectMapper) throws JsonProcessingException {
+        return getType().getType(this, objectMapper);
     }
 
     @Override

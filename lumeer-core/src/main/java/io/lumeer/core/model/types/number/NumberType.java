@@ -9,6 +9,7 @@ public class NumberType extends AbstractType {
     private NumberTypeDetail typeDetail;
 
     public NumberType() {
+        this(new NumberExample(), new NumberTypeDetail());
     }
 
     public NumberType(NumberExample exampleValue, NumberTypeDetail typeDetail) {

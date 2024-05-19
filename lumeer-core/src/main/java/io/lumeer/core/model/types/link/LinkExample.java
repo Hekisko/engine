@@ -6,6 +6,7 @@ public class LinkExample {
     private String title;
 
     public LinkExample() {
+        this("lumeer.io", "Lumeer");
     }
 
     public LinkExample(String link, String title) {

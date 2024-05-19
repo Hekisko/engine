@@ -1,6 +1,5 @@
 package io.lumeer.core.model.types.address;
 
-import software.amazon.awssdk.services.s3.endpoints.internal.Value;
 
 import java.util.*;
 
@@ -15,6 +14,7 @@ public class AddressTypeDetail {
     private boolean street;
 
     public AddressTypeDetail() {
+        this(true, false, false, false, false, false, true);
     }
 
     public AddressTypeDetail(boolean city, boolean country, boolean county, boolean houseNumber, boolean postalCode, boolean state, boolean street) {
@@ -82,7 +82,6 @@ public class AddressTypeDetail {
     public void setStreet(boolean street) {
         this.street = street;
     }
-
 
     public Object getConstraints() {
         List<String> addressFields = new ArrayList<>();

@@ -5,6 +5,7 @@ public class CheckBoxExample {
     private boolean selected;
 
     public CheckBoxExample() {
+        this(false);
     }
 
     public CheckBoxExample(boolean selected) {

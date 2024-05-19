@@ -10,13 +10,14 @@ public class DateTypeDetail {
 
     private String format;
     private boolean isUTC;
-    private long maximum;
-    private long minimum;
+    private Long maximum;
+    private Long minimum;
 
     public DateTypeDetail() {
+        this("DD.MM.YYYY", false, null, null);
     }
 
-    public DateTypeDetail(String format, boolean isUTC, long maximum, long minimum) {
+    public DateTypeDetail(String format, boolean isUTC, Long maximum, Long minimum) {
         this.format = format;
         this.isUTC = isUTC;
         this.maximum = maximum;
@@ -60,10 +61,10 @@ public class DateTypeDetail {
 
         resultMap.put("format", format);
         resultMap.put("asUtc", isUTC);
-        if (minimum > 0) {
+        if (minimum != null) {
             resultMap.put("minValue", new Date(minimum));
         }
-        if (maximum > 0) {
+        if (maximum != null) {
             resultMap.put("maxValue", new Date(maximum));
         }
 

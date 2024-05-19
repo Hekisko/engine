@@ -1,6 +1,7 @@
 package io.lumeer.core.model.types.coordinates;
 
 import io.lumeer.core.model.enums.EAiType;
+import io.lumeer.core.model.enums.ECoordinatesFormat;
 import io.lumeer.core.model.types.AbstractType;
 
 public class CoordinatesType extends AbstractType {
@@ -9,6 +10,7 @@ public class CoordinatesType extends AbstractType {
     private CoordinatesTypeDetail typeDetail;
 
     public CoordinatesType() {
+        this(new CoordinatesExample(), new CoordinatesTypeDetail());
     }
 
     public CoordinatesType(CoordinatesExample exampleValue, CoordinatesTypeDetail typeDetail) {

@@ -10,6 +10,7 @@ public class DateType extends AbstractType {
     private DateTypeDetail typeDetail;
 
     public DateType() {
+        this(new DateExample(), new DateTypeDetail());
     }
 
     public DateType(DateExample exampleValue, DateTypeDetail typeDetail) {
